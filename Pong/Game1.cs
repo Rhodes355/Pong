@@ -1,12 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Pong
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
+    
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
@@ -16,7 +15,9 @@ namespace Pong
         private SpriteFont font;
         private int score = 0;
 
-        //NEW COMMENT BABYYYYYYYYY
+        //All game objects go in this list
+        IList<IGameObject> objects = new List<IGameObject>();
+        
 
         public Game1()
         {
@@ -24,12 +25,7 @@ namespace Pong
             Content.RootDirectory = "Content";
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
+        
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
@@ -37,10 +33,7 @@ namespace Pong
             base.Initialize();
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
+        
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -52,46 +45,50 @@ namespace Pong
             font = Content.Load<SpriteFont>("Score");
         }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
+        
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            // TODO: Add your update logic here
+            
+            foreach (IGameObject obj in objects)
+            {
+                obj.Update(); //Updates all needed game objects
+            }
 
 
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
+            foreach(IGameObject obj in objects)
+            {
+                obj.Draw(spriteBatch);
+            }
+
+            // This will be done once we have a paddle class
             spriteBatch.Begin();
             spriteBatch.Draw(player, new Vector2(400, 240), Color.White);
             spriteBatch.Draw(ball, new Vector2(450, 240), Color.White);
             spriteBatch.DrawString(font, "Score: " + score, new Vector2(100, 100), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        public void Reset()
+        {
+            foreach(IGameObject obj in objects)
+            {
+                obj.Reset();
+            }
         }
     }
 }
