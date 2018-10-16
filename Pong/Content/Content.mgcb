@@ -35,7 +35,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Player.png
+/build:Player.png;Paddle.png
 
 #begin Score.spritefont
 /importer:FontDescriptionImporter
