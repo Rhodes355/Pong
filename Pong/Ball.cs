@@ -25,7 +25,7 @@ namespace Pong
             //Call PongSprite.draw();
             // TODO: Implement ballSprite class?
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, new Vector2(450, 240), Color.White);
+            spriteBatch.Draw(sprite, Position, Color.White);
             spriteBatch.End();
         }
 

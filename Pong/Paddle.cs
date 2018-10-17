@@ -25,7 +25,7 @@ namespace Pong
         {
             // TODO: Sexier way to draw using PaddleSprite?
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, new Vector2(400, 240), Color.White);
+            spriteBatch.Draw(sprite, Position, Color.White);
             spriteBatch.End();
         }
 
