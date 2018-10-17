@@ -22,9 +22,15 @@ namespace Pong
             KeyboardState state = Keyboard.GetState();
             Vector2 pos = player.Position;
             if (state.IsKeyDown(Keys.Up))
-                pos.Y += 10;
+            {
+                pos.Y -= 5;
+            }
+                
             if (state.IsKeyDown(Keys.Down))
-                pos.Y -= 10;
+            {
+                pos.Y += 5;
+            }
+                
             player.Position = pos;
         }
     }
