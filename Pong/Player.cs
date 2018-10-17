@@ -12,15 +12,19 @@ namespace Pong
     {
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
+        private Texture2D sprite;
 
-        public Player(Texture2D paddle)
+        public Player(int xLocation, int yLocation, Texture2D sprite)
         {
-
+            Position = new Vector2(xLocation, yLocation);
+            this.sprite = sprite;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Begin();
+            spriteBatch.Draw(sprite, Position, Color.White);
+            spriteBatch.End();
         }
             public void Reset()
         {
