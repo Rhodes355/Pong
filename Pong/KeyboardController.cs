@@ -37,6 +37,11 @@ namespace Pong
             {
                 game.Exit();
             }
+
+            if (state.IsKeyDown(Keys.R))
+            {
+                game.Reset();
+            }
                 
             player.Position = pos;
         }

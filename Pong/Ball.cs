@@ -10,6 +10,7 @@ namespace Pong
 {
     class Ball : IGameObject
     {
+        
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
         private Texture2D sprite;
@@ -18,6 +19,27 @@ namespace Pong
         {
             Position = new Vector2(xLocation, yLocation);
             this.sprite = sprite;
+
+            Position = new Vector2(100, 150);
+            Random rnd = new Random();
+
+            int xVel = rnd.Next(3, 6);
+            int yVel = rnd.Next(2, 4);
+
+            int flipSignX = rnd.Next(0, 2);
+            int flipSignY = rnd.Next(0, 2);
+
+            if (flipSignX == 1)
+            {
+                xVel *= -1;
+            }
+
+            if (flipSignY == 1)
+            {
+                yVel *= -1;
+            }
+
+            Velocity = new Vector2(xVel, yVel);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -32,11 +54,32 @@ namespace Pong
         public void Reset()
         {
             //Reset position/velocity
+            Position = new Vector2(100, 150);
+            Random rnd = new Random();
+
+            int xVel = rnd.Next(3, 6);
+            int yVel = rnd.Next(2, 4);
+
+            int flipSignX = rnd.Next(0, 2);
+            int flipSignY = rnd.Next(0, 2);
+
+            if (flipSignX == 1)
+            {
+                xVel *= -1;
+            }
+
+            if (flipSignY == 1)
+            {
+                yVel *= -1;
+            }
+
+            Velocity = new Vector2(xVel, yVel);
         }
 
         public void Update()
         {
             //What should this class check for/accomplish each game tick?
+            Position = new Vector2(Position.X + Velocity.X, Position.Y + Velocity.Y);
         }
     }
 }
