@@ -54,6 +54,7 @@ namespace Pong
             ball = new Ball(450, 240, ballSprite);
             objects.Add(ball);
             font = Content.Load<SpriteFont>("Score");
+            input = new KeyboardController(player);
         }
 
         
@@ -71,6 +72,8 @@ namespace Pong
             {
                 obj.Update(); // Updates all needed game objects
             }
+
+            input.Update();
 
 
             base.Update(gameTime);
