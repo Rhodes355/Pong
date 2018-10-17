@@ -12,6 +12,7 @@ namespace Pong
         SpriteBatch spriteBatch;
         private KeyboardController input;
         private Player player;
+        private Player player2;
         private Paddle paddle;
         private Ball ball;
         private Texture2D paddleSprite;
@@ -55,10 +56,11 @@ namespace Pong
 
             paddle = new Paddle(400, 240, paddleSprite);
             player = new Player(300, 250, paddleSprite);
+            player2 = new Player(200, 250, paddleSprite);
             ball = new Ball(width/2, height/2, ballSprite);
             
 
-            input = new KeyboardController(player, this);
+            input = new KeyboardController(player, player2, this);
 
             objects.Add(player);
             objects.Add(paddle);
