@@ -49,6 +49,7 @@ namespace Pong
             paddleSprite = Content.Load<Texture2D>("paddle");
             paddle = new Paddle(400, 240, paddleSprite);
             player = new Player(300, 250, paddleSprite);
+            objects.Add(player);
             objects.Add(paddle);
             ballSprite = Content.Load<Texture2D>("ball");
             ball = new Ball(450, 240, ballSprite);

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pong
 {
-    public class Player
+    public class Player : IGameObject
     {
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
