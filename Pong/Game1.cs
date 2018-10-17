@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System;
 
 namespace Pong
 {
@@ -51,10 +52,10 @@ namespace Pong
             ballSprite = Content.Load<Texture2D>("ball");
             font = Content.Load<SpriteFont>("Score");
 
-            int width = graphics.PreferredBackBufferWidth;
-            int height = graphics.PreferredBackBufferHeight;
-
-            paddle = new Paddle(400, 240, paddleSprite);
+            int width = GraphicsDevice.Viewport.Bounds.Width;
+            int height = GraphicsDevice.Viewport.Bounds.Height;
+            
+            paddle = new Paddle(width/2, height/2, paddleSprite);
             player = new Player(300, 250, paddleSprite);
             player2 = new Player(200, 250, paddleSprite);
             ball = new Ball(width/2, height/2, ballSprite);

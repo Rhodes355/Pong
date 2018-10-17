@@ -58,7 +58,7 @@ namespace Pong
 
         private void InitializeValues()
         {
-            Position = new Vector2(100, 150);
+            // Position = new Vector2(100, 150);
             Random rnd = new Random();
 
             int xVel = rnd.Next(3, 6);
