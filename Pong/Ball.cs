@@ -20,26 +20,7 @@ namespace Pong
             Position = new Vector2(xLocation, yLocation);
             this.sprite = sprite;
 
-            Position = new Vector2(100, 150);
-            Random rnd = new Random();
-
-            int xVel = rnd.Next(3, 6);
-            int yVel = rnd.Next(2, 4);
-
-            int flipSignX = rnd.Next(0, 2);
-            int flipSignY = rnd.Next(0, 2);
-
-            if (flipSignX == 1)
-            {
-                xVel *= -1;
-            }
-
-            if (flipSignY == 1)
-            {
-                yVel *= -1;
-            }
-
-            Velocity = new Vector2(xVel, yVel);
+            InitializeValues();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -54,26 +35,7 @@ namespace Pong
         public void Reset()
         {
             //Reset position/velocity
-            Position = new Vector2(100, 150);
-            Random rnd = new Random();
-
-            int xVel = rnd.Next(3, 6);
-            int yVel = rnd.Next(2, 4);
-
-            int flipSignX = rnd.Next(0, 2);
-            int flipSignY = rnd.Next(0, 2);
-
-            if (flipSignX == 1)
-            {
-                xVel *= -1;
-            }
-
-            if (flipSignY == 1)
-            {
-                yVel *= -1;
-            }
-
-            Velocity = new Vector2(xVel, yVel);
+            InitializeValues();
         }
 
         public void Update()
@@ -92,6 +54,30 @@ namespace Pong
             }
 
             
+        }
+
+        private void InitializeValues()
+        {
+            Position = new Vector2(100, 150);
+            Random rnd = new Random();
+
+            int xVel = rnd.Next(3, 6);
+            int yVel = rnd.Next(2, 4);
+
+            int flipSignX = rnd.Next(0, 2);
+            int flipSignY = rnd.Next(0, 2);
+
+            if (flipSignX == 1)
+            {
+                xVel *= -1;
+            }
+
+            if (flipSignY == 1)
+            {
+                yVel *= -1;
+            }
+
+            Velocity = new Vector2(xVel, yVel);
         }
     }
 }
