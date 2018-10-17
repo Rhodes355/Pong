@@ -52,7 +52,8 @@ namespace Pong
 
             paddle = new Paddle(400, 240, paddleSprite);
             player = new Player(300, 250, paddleSprite);
-            ball = new Ball(450, 240, ballSprite);
+            ball = new Ball(100, 150, ballSprite);
+            
 
             input = new KeyboardController(player, this);
 
