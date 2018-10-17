@@ -80,6 +80,18 @@ namespace Pong
         {
             //What should this class check for/accomplish each game tick?
             Position = new Vector2(Position.X + Velocity.X, Position.Y + Velocity.Y);
+
+            if (Position.X > 465 || Position.X < -280)
+            {
+                Velocity = new Vector2(Velocity.X * -1, Velocity.Y);
+            }
+
+            if (Position.Y < -97 || Position.Y > 360)
+            {
+                Velocity = new Vector2(Velocity.X, Velocity.Y * -1);
+            }
+
+            
         }
     }
 }
