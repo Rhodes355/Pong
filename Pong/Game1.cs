@@ -10,6 +10,8 @@ namespace Pong
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private KeyboardController input;
+        private Player player;
         private Paddle paddle;
         private Ball ball;
         private Texture2D paddleSprite;
@@ -43,8 +45,10 @@ namespace Pong
 
             // Use this.Content to load your game content here
             // TODO: Better way to load sprites?
+
             paddleSprite = Content.Load<Texture2D>("paddle");
             paddle = new Paddle(400, 240, paddleSprite);
+            player = new Player(paddleSprite);
             objects.Add(paddle);
             ballSprite = Content.Load<Texture2D>("ball");
             ball = new Ball(450, 240, ballSprite);
