@@ -11,10 +11,12 @@ namespace Pong
     public class KeyboardController
     {
         private Player player;
+        private Game1 game;
 
-        public KeyboardController(Player player)
+        public KeyboardController(Player player, Game1 game)
         {
             this.player = player;
+            this.game = game;
         }
 
         public void Update()
@@ -22,9 +24,20 @@ namespace Pong
             KeyboardState state = Keyboard.GetState();
             Vector2 pos = player.Position;
             if (state.IsKeyDown(Keys.Up))
-                pos.Y += 10;
+            {
+                pos.Y -= 5;
+            }
+                
             if (state.IsKeyDown(Keys.Down))
-                pos.Y -= 10;
+            {
+                pos.Y += 5;
+            }
+
+            if (state.IsKeyDown(Keys.Q))
+            {
+                game.Exit();
+            }
+                
             player.Position = pos;
         }
     }
