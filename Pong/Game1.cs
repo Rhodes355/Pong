@@ -47,15 +47,18 @@ namespace Pong
             // TODO: Better way to load sprites?
 
             paddleSprite = Content.Load<Texture2D>("paddle");
+            ballSprite = Content.Load<Texture2D>("ball");
+            font = Content.Load<SpriteFont>("Score");
+
             paddle = new Paddle(400, 240, paddleSprite);
             player = new Player(300, 250, paddleSprite);
+            ball = new Ball(450, 240, ballSprite);
+
+            input = new KeyboardController(player, this);
+
             objects.Add(player);
             objects.Add(paddle);
-            ballSprite = Content.Load<Texture2D>("ball");
-            ball = new Ball(450, 240, ballSprite);
             objects.Add(ball);
-            font = Content.Load<SpriteFont>("Score");
-            input = new KeyboardController(player, this);
         }
 
         
