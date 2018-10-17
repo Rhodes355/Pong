@@ -55,7 +55,7 @@ namespace Pong
             ball = new Ball(450, 240, ballSprite);
             objects.Add(ball);
             font = Content.Load<SpriteFont>("Score");
-            input = new KeyboardController(player);
+            input = new KeyboardController(player, this);
         }
 
         
