@@ -63,6 +63,7 @@ namespace Pong
             input = new KeyboardController(player, player2, this);
 
             objects.Add(player);
+            objects.Add(player2);
             objects.Add(paddle);
             objects.Add(ball);
         }
