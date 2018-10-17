@@ -50,9 +50,12 @@ namespace Pong
             ballSprite = Content.Load<Texture2D>("ball");
             font = Content.Load<SpriteFont>("Score");
 
+            int width = graphics.PreferredBackBufferWidth;
+            int height = graphics.PreferredBackBufferHeight;
+
             paddle = new Paddle(400, 240, paddleSprite);
             player = new Player(300, 250, paddleSprite);
-            ball = new Ball(100, 150, ballSprite);
+            ball = new Ball(width/2, height/2, ballSprite);
             
 
             input = new KeyboardController(player, this);
