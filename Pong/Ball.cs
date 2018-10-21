@@ -25,8 +25,6 @@ namespace Pong
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //Call PongSprite.draw();
-            // TODO: Implement ballSprite class?
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, Position, Color.White);
             spriteBatch.End();
@@ -34,8 +32,7 @@ namespace Pong
 
         public void Reset()
         {
-            //Reset position/velocity
-            InitializeValues();
+            InitializeValues(); //Reset position/velocity
         }
 
         public void Update()
@@ -43,11 +40,15 @@ namespace Pong
             //What should this class check for/accomplish each game tick?
             Position = new Vector2(Position.X + Velocity.X, Position.Y + Velocity.Y);
 
+            // If the ball hits the approx sides of the window it must bounce back
+            // TODO: This should update the score since when the ball reaches the left or right side it would score a point
             if (Position.X > 465 || Position.X < -280)
             {
                 Velocity = new Vector2(Velocity.X * -1, Velocity.Y);
             }
 
+            // If the ball hits the approx top or bottom of the window it must bounce back
+            // TODO: Use a method to get bounds instead of using magic numbers
             if (Position.Y < -97 || Position.Y > 360)
             {
                 Velocity = new Vector2(Velocity.X, Velocity.Y * -1);
@@ -58,9 +59,11 @@ namespace Pong
 
         private void InitializeValues()
         {
-            // Position = new Vector2(100, 150);
+            // Approx. center of window = Vector2(100, 150)
             Random rnd = new Random();
 
+            // Initial x and y velocity should be reasonable values
+            // i.e do not have the ball score a goal from going so fast
             int xVel = rnd.Next(3, 6);
             int yVel = rnd.Next(2, 4);
 

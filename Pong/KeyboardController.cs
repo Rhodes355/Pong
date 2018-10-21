@@ -33,6 +33,7 @@ namespace Pong
             Vector2 pos = player1.Position;
             Vector2 pos2 = player2.Position;
 
+            // Player 1 uses up arrow, player 2 uses W key
             if (state.IsKeyDown(Keys.Up))
             {
                 pos.Y -= 5;
@@ -43,6 +44,7 @@ namespace Pong
                 pos2.Y -= 5;
             }
 
+            // Player 1 uses down arrow, player 2 uses S key
             if (state.IsKeyDown(Keys.Down))
             {
                 pos.Y += 5;
@@ -62,7 +64,8 @@ namespace Pong
             {
                 game.Reset();
             }
-                
+
+            // Set the players positions
             player1.Position = pos;
             player2.Position = pos2;
         }

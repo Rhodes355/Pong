@@ -23,7 +23,6 @@ namespace Pong
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // TODO: Sexier way to draw using PaddleSprite?
             spriteBatch.Begin();
             spriteBatch.Draw(sprite, Position, Color.White);
             spriteBatch.End();
@@ -37,6 +36,7 @@ namespace Pong
         public void Update()
         {
             // What should this class check for each tick?
+            // TODO: This class will handle AI for the paddle in the case that the user selects single player
         }
     }
 }

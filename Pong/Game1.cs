@@ -11,13 +11,18 @@ namespace Pong
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
         private KeyboardController input;
+
         private Player player;
         private Player player2;
+
         private Paddle paddle;
         private Ball ball;
+
         private Texture2D paddleSprite;
         private Texture2D ballSprite;
+
         private SpriteFont font;
         private int score = 0;
 
@@ -48,21 +53,27 @@ namespace Pong
             // Use this.Content to load your game content here
             // TODO: Better way to load sprites?
 
+            // Load textures
             paddleSprite = Content.Load<Texture2D>("paddle");
             ballSprite = Content.Load<Texture2D>("ball");
             font = Content.Load<SpriteFont>("Score");
-
+            
+            // Get bounds of the game window
+            // TODO: These don't seem to give the right bounds. Figure out why
             int width = GraphicsDevice.Viewport.Bounds.Width;
             int height = GraphicsDevice.Viewport.Bounds.Height;
             
+            // Initialize game objects at their proper positions
+            // TODO: Figure out proper positions
             paddle = new Paddle(width/2, height/2, paddleSprite);
             player = new Player(300, 250, paddleSprite);
             player2 = new Player(200, 250, paddleSprite);
             ball = new Ball(width/2, height/2, ballSprite);
             
-
+            // Keyboard input object
             input = new KeyboardController(player, player2, this);
 
+            // Add game objects to list
             objects.Add(player);
             objects.Add(player2);
             objects.Add(paddle);
@@ -78,14 +89,13 @@ namespace Pong
         
         protected override void Update(GameTime gameTime)
         {
-            // TODO: KeyboardController class
 
             foreach (IGameObject obj in objects)
             {
-                obj.Update(); // Updates all needed game objects
+                obj.Update(); // Update all game objects
             }
 
-            input.Update();
+            input.Update(); // Updates keyboard input
 
 
             base.Update(gameTime);
@@ -98,13 +108,14 @@ namespace Pong
 
             foreach(IGameObject obj in objects)
             {
-                obj.Draw(spriteBatch);
+                obj.Draw(spriteBatch); // Draw all game objects
             }
 
-            // TODO: Score class?
+            // TODO: Score class
             spriteBatch.Begin();
             spriteBatch.DrawString(font, "Score: " + score, new Vector2(100, 100), Color.White);
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
 
@@ -112,7 +123,7 @@ namespace Pong
         {
             foreach(IGameObject obj in objects)
             {
-                obj.Reset();
+                obj.Reset(); // Reset all game objects
             }
         }
     }
